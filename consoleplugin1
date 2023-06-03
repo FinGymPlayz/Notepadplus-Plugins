@@ -1,1 +1,31 @@
-print("testing")
+from tkinter import *
+
+class StylizedButton(Button):
+    def __init__(self, *args, **kwargs):
+        '''
+        Buttons don't do so well getting borders, so we are going to 
+        do some black magic here to put the button into a frame
+        whilst retaining the reference to the button.
+        Warning: this is dumb.
+        '''
+        f = Frame( args[0]
+                  ,highlightbackground="green"
+                  ,highlightcolor="green"
+                  ,highlightthickness=1)
+        super().__init__(f, *args[1:], **kwargs)
+        self.configure( activebackground='black'
+                       ,activeforeground='green'
+                       ,background='black'
+                       ,foreground='lime'
+                       ,relief='solid')
+        f.pack()
+                       
+class App(Tk):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.configure(bg='black',)
+        self.geometry('100x100')
+        StylizedButton( self, text='this button is SEXY'
+                       ,command=lambda: print('hi')).pack()
+        
+App().mainloop()
